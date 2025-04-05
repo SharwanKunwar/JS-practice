@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    <h2></h2>
+    <div>
+        <ul id="img-list">
+            <li>
+                <img width="300px" src="assets/clock.png" alt="Clock" id="clock">
+            </li>
+            <li>
+                <img width="300px" src="assets/river.png" alt="River" id="river">
+            </li>
+            <li>
+                <img width="300px" src="assets/game.png" alt="Game" id="game">
+            </li>
+            <li>
+                <a href="https://google.com" id="google" style="color: purple;">Google</a>
+            </li>
+        </ul>
+    
+    </div>
+
+    <Script>
+        //--------------------------------------------------------------------------------
+        // const clock = document.getElementById("clock");
+        // clock.addEventListener("click", function(){
+        //     alert("This is clock");
+        // })
+
+        //--------------------------------------------------------------------------------
+        // # event propragation (true/false) in addEventListener
+        // document.querySelector("ul").addEventListener("click", function(e){
+        //     console.log("Ul is clicked")
+        // },false)
+
+        //--------------------------------------------------------------------------------
+        // document.getElementById("river").addEventListener("click", function(e){
+        //     console.log("River is clicked")
+        //     //if we want to performe only river we have to set stopePropagation on e. it remove bubbling. on performe on river
+        //     e.stopPropagation();
+        // },true)
+
+
+        //--------------------------------------------------------------------------------
+        // document.getElementById("google").addEventListener("click", function(e){
+        //     e.preventDefault();     //if you don't put preventDefault it's direct open the link.
+        //     e.stopPropagation();    // if you don't put stopPropagation it's bubble mean execute event Like ul->li->img  you set the event in img but it's execute ul and li also in the act of bubbling.
+        //     console.log("google clicked");
+
+
+        // })
+
+        //--------------------------------------------------------------------------------
+
+        document.querySelector("#img-list").addEventListener("click", function(e){
+        
+            // if(e.target.id === "google"){
+                //     e.preventDefault();
+                //     e.stopPropagation();
+                //     console.log("Stoped fire goodgle link");
+                // }
+                
+                console.log(e.target.parentNode);
+                // let removeImg = e.target.parentNode
+                // removeImg.remove();  // also you can do to remove _  removeImg.parentNode.removeChild(removeImg);
+
+                // console.log(e.target.tagName);
+                // if(e.target.tagName === "LI"){
+
+                // }else{
+                //     let removeImg = e.target.parentNode
+                // removeImg.remove();  // also you can do to remove _  removeImg.parentNode.removeChild(removeImg);
+                // }
+
+        
+                
+            
+
+            
+        },false)
+        
+
+
+
+
+
+    </Script>
+
+
+</body>
+</html>
+
+
+
+<!-- // # learn for events -->
+<!-- // type, timestamp, defaultPrevented, target, toElement, srcElement , currentTarget, clientX, clintY, screenX, screenY, altkey, ctrlkey, shiftkey, keyCode -->
+
+<!-- // # event propragation (true/false) in addEventListener("click", funciton(){ -->
+                                                        <!-- },false)  false is default -->
+
+
+
+<!-- // moral of the story -->
+<!-- 
+1. what is event 
+Event is use to perform click operation which performe task like : you can set addEventListener on button, img , li, or other element to perform task.
+
+2. better way to use 
+there are several way to set eventListener 
+- direct on html element; it case scalablity issue
+- using onclick on script like: document.getElementById("river").onclick = funciton(){};  it is not good at all.
+- final : you can use addEventListener like : document.getElementById("river").addEventListener("click", funciton(){
+    //code here
+})   this is good approach to set event listener.
+
+
+3. Event propragation (true/false)   false is by default && bubbling
+    it prevent execution of links and ther like: you have a a tag when you click on it it directly drag to the address but you want to some other operation just use e.preventDefalut(); and set the third paremeter true;
+    it simply prevent direct fire.
+
+    #bubbling is tracking root element like : you have ul->li->img  you set the event on img but it's execute ul and li also in the act of bubbling. if you want to execute only your clicked element you have to set : e.stopPropagation();
+
+4. selection root element and getting child elements 
+document.quarySelector("img-list").addEventListener("click", funciton(e){
+console.log(e.target.id);       you get the id of element then you can do any operation on it. simply e gives you methods, elements and more. of root elemtnt lik : ul -> li -> img "in this case root is ul and child is li and li child is img"
+})
+
+5. e.target, e.target.id, e.target.tagName, e.target.parentNode
+e.target : gives you whole elemtnt 
+e.target.id: gives you id of click element
+e.target.tagName: gives you element tag like ul, li, form etc.
+e.target.pargentNode: if we click img. it gives it's parent element like : we have img in li : <li>img</li> if we click on img we get <li></li>
+6. remove() tag work : it remove 
+
+7. how to prevent deleting all element when root is clicked 
+we have to check if click is parent then do nothing else remove element. what happend when we check strickly : if we click on element lik img it is not parent ok remove it.
+else nothing
+
+firstly we have to get clicked target tagName 
+console.log(e.target.tagName) // we see what is the target name then we set condition according to tagName if this else that
+
+ex; if(e.target.tagName === "LI"){
+        do nothing();
+    }else{
+        remove();
+    }
+
+-->

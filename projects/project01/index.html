@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color changer them</title>
+</head>
+<body>
+    
+
+    <script>
+        const body = document.querySelector('body');
+
+        const div = document.createElement('div');
+        div.style.backgroundColor = "gray";
+        div.style.width = "100%";
+        div.style.height = "150px";
+        div.style.display = "flex";
+        div.style.justifyContent = "center";
+        div.style.alignItems = "center";
+        div.style.gap = "20px";
+        body.appendChild(div);
+
+        function createButton(name){
+            const button = document.createElement("button")
+            button.style.width = "100px";
+            button.style.height = "100px";
+            button.style.color = "white";
+            button.style.fontSize = "20px"
+            button.style.fontWeight = "bold";
+            button.style.border = "none";
+            button.style.borderRadius = "100px";
+            button.appendChild(document.createTextNode(name))
+            button.style.backgroundColor = name;
+            button.style.display = "flex";
+            button.style.justifyContent = "center";
+            button.style.alignItems = "center";
+    
+            div.appendChild(button);
+            return button;
+        }
+
+        const title = document.createElement("h1");
+        title.textContent = "Color Changer";
+        title.style.color = "white";
+        title.style.fontWeight = "bold";
+        body.appendChild(title);
+
+        let b01 = createButton("red");
+        let b02 = createButton("green");
+        let b03 = createButton("blue");
+
+    
+        //set the event click listener 
+        b01.addEventListener("click", function(){
+            body.style.backgroundColor = "Red";
+            title.textContent = "Red Them applied";
+        })
+
+        b02.addEventListener("click", function(){
+
+            body.style.backgroundColor = "Green";
+            title.textContent = "Green Them applied";
+        })
+
+        b03.addEventListener("click", function(){
+            body.style.backgroundColor = "Blue";
+            title.textContent = "Blue Them applied";
+        })
+
+
+    </script>
+</body>
+</html>

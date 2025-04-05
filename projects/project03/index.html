@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIM calculation</title>
+</head>
+
+<!-- style code -->
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    html, body{
+        width: 100vw;
+        height: 100vh;
+        background-color: gray;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #box{
+        width: 400px;
+        height: 600px;
+        background-color: black;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #box-details{
+        position: absolute;
+        width: 500px;
+        height: 100px;
+        border-radius: 20px;
+        margin-bottom: 500px;
+        background-color: white;
+        box-shadow: 1px 1px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-family: monospace;
+        border: none;
+    }
+    
+  .inputBox{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        height: 45%;
+        gap: 15px;
+        /* background-color: red; */
+        margin-top: 150px;
+    }
+    .text{
+        font-size: 30px;
+        color: yellow;
+        font-weight: 900;
+    }
+    .value{
+        width: 90%;
+        height: 50px;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+    #buttonBox{
+        width: 90%;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        /* background-color: red; */
+    }
+    #btn{
+        width: 60%;
+        height: 50px;
+        border-top-left-radius: 100px;
+        border-bottom-left-radius: 100px;
+        box-shadow: 1px 1px 5px yellow;
+        border: none;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    #reset{
+        width: 20%;
+        height: 50px;
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+        border: none;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    #advise{
+        margin-top: 20px;
+        color: white;
+        text-decoration: underline;
+    }
+    
+
+</style>
+
+<body>
+    
+    <div id="box">
+        <div class="inputBox">
+            <label class="text" for="height">Height in [ ft ]:</label>
+            <input type="number" id="height" class="value" name="height" min="0" step="0.1" placeholder="e.g., 5.5">
+            <label class="text" for="weight">Weight in [ KG ]:</label>
+            <input type="number" id="weight" class="value" name="weight" min="0" step="0.1" placeholder="e.g., 40">
+        </div>
+        <div id="buttonBox">
+            <button  id="btn">Calculate</button>
+            <button  id="reset">Reset</button>
+        </div>
+
+        <h3 id="advise">Advise</h3>
+
+    </div>
+    <div id="box-details">
+        <h1>Result section</h1>
+    </div>
+
+
+
+    <script>
+        const calculateBtn = document.querySelector("#btn");
+        const result = document.querySelector("#box-details");
+        const h_fild = document.getElementById("height");
+        const w_fild = document.getElementById("weight");
+        const h1 = document.querySelector("h1");
+        h1.style.fontsize = "30px";
+    
+        const resetBtn = document.querySelector("#reset");
+        
+
+        calculateBtn.addEventListener("click", function(){
+
+            let height = Number(document.getElementById("height").value);
+            let weight = Number(document.getElementById("weight").value);
+            let sum= undefined;
+
+            console.log(height)
+            console.log(weight)
+
+            if(height != 0 && weight != 0){
+                formula = (weight/Math.pow((height*0.3048),2));
+                console.log(formula)
+                if(formula < 18.6){
+                    result.style.color = "red"
+                    h1.textContent = "UnderWeight"
+                    
+                }else if(formula >= 18.6 && formula <= 24.9){
+                    result.style.color = "green"
+                    h1.textContent = "Fit (Normal)"
+                }else if(formula > 24.9){
+                    result.style.color = "red"
+                    h1.textContent = "OverWeight"
+                }
+            }else{
+                h1.textContent = "fill in the blank"
+                result.style.color = "red";
+            }
+
+            resetBtn.addEventListener("click", function(e){
+                    result.style.color = "black";
+                    h1.textContent = "Result section";
+                    h_fild.value = "";
+                    w_fild.value = "";
+                    
+
+                    
+        })
+        })
+
+       
+
+
+        
+    </script>
+</body>
+</html>

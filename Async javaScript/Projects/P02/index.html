@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>key tracking</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    html, body{
+        width: 100vw;
+        height: 100vh;
+        background-color: gray;        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    table{
+        width: 250px;
+        height: 100px;
+        text-align: center;
+        box-shadow: 1px 1px 10px black;
+        border: 5px solid black;
+        color: white;
+    }
+    .head{
+        color: rgb(17, 255, 0);
+        font-weight: 900;
+        font-style: bold;
+        text-shadow: 2px 2px 5px black;
+    }
+    
+    .value{
+        font-size: 20px;
+        text-shadow: 2px 2px 5px black;
+    }
+</style>
+<body>
+    <table border="2px">
+        <!-- head -->
+        <tr class="head">
+            <td>Key</td>
+            <td>Key Code</td>
+            <td>Code</td>
+        </tr>
+        <!-- body -->
+        <tr class="value">
+            <td id="key">...</td>
+            <td id="keyCode">...</td>
+            <td id="code">...</td>
+        </tr>
+    </table>
+
+    <script>
+        const key = document.querySelector("#key");
+        const keyCode = document.querySelector("#keyCode")
+        const code = document.querySelector("#code");
+
+    window.addEventListener("keydown", function(e){
+        if(e.code === "Space"){
+            key.textContent = e.code;    
+        }else{
+            key.textContent = e.key;
+        }
+        keyCode.textContent = e.keyCode;
+        code.textContent = e.code;
+        
+    })
+    </script>
+</body>
+</html>

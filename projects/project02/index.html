@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Them changer</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+    html, body{
+        width: 100vw;
+        height: 100vh;
+        background-color: gray;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #box{
+        width: 80%;
+        height: 30%;
+        background: rgba(255, 255, 255, 0.2); /* Transparent background /*
+        /* background-color: rgb(51, 49, 49); */
+        backdrop-filter: blur(10px); /* Apply blur effect */
+        -webkit-backdrop-filter: blur(10px); /* Safari support */
+        /* border: 1px solid rgba(0, 0, 0, 0.3); */
+        box-shadow: inset 1px 1px 10px whitesmoke;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        gap: 30px;
+    }
+    #top-box{
+        color: white;
+    }
+    #bottom-box{
+        display: flex;
+        gap: 20px;
+    }
+
+    .btn{
+        width: 100px;
+        height: 50px;
+        font-size: 20px;
+        border: 1px solid white;
+        
+    }
+</style>
+<body>
+    <div id="box">
+        <div id="top-box">Click on buttons to change them</div>
+        <div id="bottom-box">
+            <span><button style="background-color: red; color: white;" id="Red" class="btn">Red</button></span>
+            <span><button style="background-color: green; color: white;" id="Green" class="btn">Green</button></span>
+            <span><button style="background-color: blue; color: white;" id="Blue" class="btn">Blue</button></span>
+            <span><button style="background-color: pink; color: white;" id="Pink" class="btn">Pink</button></span>
+        </div>
+    </div>
+
+    <script>
+        const btns = document.querySelectorAll(".btn");
+        btns.forEach(function(btn){
+            btn.addEventListener("click", (e) =>{
+                if(e.target.id == e.target.id){
+                document.body.style.backgroundColor = e.target.id;
+                }
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API's request</title>
+</head>
+<body>
+    <h1>API's request</h1>
+
+    <script>
+        // Define the API endpoint URL
+        const requestUrl = "https://api.github.com/users/SharwanKunwar";
+        
+        // Create a new XMLHttpRequest object
+        const apiRequest = new XMLHttpRequest();
+        
+        // Open a GET request to the specified URL
+        apiRequest.open("GET", requestUrl, true);
+        
+        // Define an event listener for state changes
+        apiRequest.onreadystatechange = function () {
+            // Check if the request is complete (readyState 4)
+            if (apiRequest.readyState === 4) {
+                // Check if the request was successful (status 200)
+                if (apiRequest.status === 200) {
+                    try {
+                        // Parse the JSON response
+                        const myData = JSON.parse(apiRequest.responseText);
+                        console.log("User Name:", myData.name);
+                    } catch (error) {
+                        console.error("Error parsing JSON:", error);
+                    }
+                } else {
+                    console.error("Request failed with status:", apiRequest.status);
+                }
+            }
+        };
+        
+        // Send the request to the API
+        apiRequest.send();
+    </script>
+    
+    <!--
+    PROCESS BREAKDOWN:
+    1. Define the API endpoint URL where we want to fetch data from.
+    2. Create an XMLHttpRequest object.
+    3. Open a connection to the API using the GET method.
+    4. Set up an event listener (onreadystatechange) to handle state changes.
+    5. Check if the request is complete (readyState === 4).
+    6. If successful (status 200), parse and log the JSON data.
+    7. Handle errors for JSON parsing and request failures.
+    8. Send the request to fetch the data.
+    -->
+    
+</body>
+</html>

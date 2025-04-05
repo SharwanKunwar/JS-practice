@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add and Remove Elements</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    html, body {
+        width: 100vw;
+        height: 100vh;
+    }
+    #mainBox {
+        background-color: yellow;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    ul {
+        list-style-type: none;
+    }
+</style>
+
+<body>
+
+    <div id="mainBox"></div>
+
+    <script>
+        const mainBox = document.querySelector("#mainBox");
+
+        const title = document.createElement("h1");
+        title.textContent = "Programming List";
+        title.style.fontSize = "25px";
+        title.style.fontFamily = "monospace";
+        title.style.fontWeight = "bold"; // Fixed incorrect style
+        title.style.color = "red";
+        title.style.paddingBottom = "6px";
+        title.style.borderBottom = "2px solid";
+
+        const listBox = document.createElement("div");
+        listBox.setAttribute("id", "listBox");
+        listBox.style.background = "black";
+        listBox.style.color = "white";
+        listBox.style.fontFamily = "monospace";
+        listBox.style.width = "50%";
+        listBox.style.height = "80%";
+        listBox.style.padding = "10px";
+
+        mainBox.appendChild(listBox);
+        listBox.appendChild(title);
+
+        // Creating an unordered list
+        const ul = document.createElement("ul");
+        listBox.appendChild(ul);
+
+        function programList(listName) {
+            const li = document.createElement("li");
+            li.appendChild(document.createTextNode(listName));
+            li.style.paddingTop = "15px";
+            li.style.paddingLeft = "20px";
+            ul.appendChild(li); // Append to ul instead of listBox
+        }
+
+        const languageList = ["Java", "JavaScript", "C", "C++", "Python"];
+
+        languageList.forEach(programList); // Cleaner iteration
+
+        // Removing the second element (index 1)
+        setTimeout(() => {
+            const secondItem = ul.querySelector("li:nth-child(1)");
+            if (secondItem) {
+                ul.removeChild(secondItem);
+                console.log("Removed:", secondItem.textContent);
+            }
+        }, 2000); // Delay to see the change
+    </script>
+
+</body>
+</html>

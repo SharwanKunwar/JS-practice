@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval</title>
+</head>
+<body>
+        <h1>Unpredictable</h1>
+        <div>
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+        </div>
+
+        <script>
+            const sayMyName = function(){
+                console.log("Hello, Sharwan");
+            }
+        
+            let processId = null;
+        
+            document.querySelector("div").addEventListener("click", function(e){
+            
+                
+                if (e.target.id === "start") {
+                    if (!processId) { // Prevent multiple intervals
+                        processId = setInterval(sayMyName, 1000);
+                    }
+                } else if (e.target.id === "stop") {
+                    if (processId) {
+                        clearInterval(processId);
+                        processId = null; // Reset to null
+                    }
+                } else if (e.target.tagName === "DIV") {
+                    return;
+                }
+                console.log(processId)
+                
+            });
+        </script>
+        
+</body>
+</html>

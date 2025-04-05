@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form bmi</title>
+</head>
+<body>
+    
+    <form id="bim-form">
+        <h2>Result</h2>
+        <label name="height" type="text"> Height in (ft):
+            <input name="height" type="text" id="H" placeholder="E.g 5.5 in ft"/>
+        </label>
+        <label name="weight" type="text"> weight in (kg):
+            <input name="weight" type="text" id="W" placeholder="E.g 50 in kg"/>
+        </label>
+        <button type="submit">Calculate</button>
+    </form>
+
+    <script>
+        const myForm = document.querySelector("#bim-form");
+        const resultSection = document.querySelector("h2");
+        const button = document.querySelector("button");
+
+            
+            myForm.addEventListener("submit", function(event){
+                
+                    event.preventDefault();
+                
+                
+                const height = parseFloat(document.getElementById("H").value);
+                const weight = parseFloat(document.getElementById("W").value);
+            
+                if(height<=0 || height ==="" || isNaN(height) || weight<=0 || isNaN(weight) || weight === ""){
+                    resultSection.innerHTML = "Fill the blanks";
+                }else{
+
+                    const formula = (weight/Math.pow(height*0.3048,2));
+                    resultSection.innerHTML = formula;
+
+                }
+            
+        })
+
+            
+
+
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>disko light</title>
+</head>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    html, body{
+        width: 100vw;
+        height: 100vh;
+        background-color: gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #btn{
+        width: 90%;
+        height: 20%;
+        background-color: rgb(0, 0, 0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        border-radius: 30px;
+        box-shadow: 1px 1px 10px rgb(36, 36, 36);
+        border: none;
+    }
+    #start{
+        width: 40%;
+        height: inherit;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 1px 1px 10px whitesmoke;
+    }
+    #stop{
+        width: 40%;
+        height: inherit;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 1px 1px 10px whitesmoke;
+    }
+</style>
+<body>
+    
+    <div id="btn">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+    </div>
+
+    <script>
+        const div = document.querySelector("#btn");
+        let targetvalue = null;
+
+        const changeColor = function()
+        {
+            const colorValue = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"];
+            let finalColor = "#";
+            for(let i=0; i<6; i++)
+            {
+                finalColor += colorValue[Math.floor(Math.random()*16)];
+            }
+            document.querySelector("body").style.backgroundColor = finalColor;
+            return finalColor;
+        }
+        
+        
+        div.addEventListener("click", function(e)
+        {
+            
+            if(e.target.id === "start"){
+                if(!targetvalue){
+                targetvalue = setInterval(changeColor);
+                }
+                
+            }else if(e.target.id === "stop"){
+                if(targetvalue){
+                    clearInterval(targetvalue);
+                    targetvalue = null;
+                }
+                
+            }
+        })
+
+        
+
+
+        
+    </script>
+</body>
+</html>

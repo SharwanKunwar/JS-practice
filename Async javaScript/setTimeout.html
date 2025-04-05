@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="setTimeout use">
+    <title>setTimeout</title>
+</head>
+<body>
+    <h1>Mahakal</h1>
+    <button>JAY</button>
+
+    <script>
+
+        
+        
+        // setTimeout demonstration
+        setTimeout(()=>{
+            console.log("Har har mahadave");
+        },2000)
+        
+        //setTimeout can take refrence of function also like this
+        const sayMahakal = function(){
+            console.log("mahakal");
+        }
+        let st = setTimeout(sayMahakal,3000);
+        
+        
+        // setTimeout on click
+        document.querySelector("button").addEventListener("click",function(e){
+            clearTimeout(st);
+            console.log("exectuion storped")
+            // setTimeout(()=>{
+            //     document.querySelector("h1").innerHTML = "jay mahakal with sharwan"
+            // },5000);
+        })
+        
+        
+        </script>
+</body>
+</html>

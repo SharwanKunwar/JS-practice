@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add then remove</title>
+</head>
+<body>
+    
+    <script>
+        const body = document.querySelector("body");
+        body.style.background = "gray";
+        body.style.display = "flex";
+        body.style.justifyContent = "center";
+        body.style.marginTop = "40%";
+
+        const div = document.createElement("div");
+        div.style.background = "white";
+        div.style.width = "300px";
+        div.style.height = "500px";
+        div.style.borderRadius = "10px";
+        div.style.boxShadow = "1px 2px 5px blue"
+        body.appendChild(div);
+
+        const ulList = document.createElement("ul");
+        div.appendChild(ulList);
+
+
+        
+            function makeItems(itemName){
+                const item = document.createElement("li");
+            item.appendChild(document.createTextNode(itemName))
+            ulList.appendChild(item);
+            }
+            
+            const myList = ["sharwan", "parbesh", "subash", "roshan"];
+            myList.forEach(makeItems);
+
+            //let's remove items form the list
+            const fistItem = document.querySelector("li:first-child");
+            const lastItem = document.querySelector("li:last-child");
+            
+            fistItem.remove();
+            lastItem.remove();
+            
+            setTimeout(() =>{
+                console.log(`Item : ${fistItem.innerHTML} is removed from the list`);
+                console.log(`Item : ${lastItem.innerHTML} is removed from the list`);
+            },1000);
+            
+            
+        
+
+        
+        
+    </script>
+</body>
+</html>
