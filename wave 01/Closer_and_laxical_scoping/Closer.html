@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>closer</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }html, body{
+        width: 100vw;
+        height: 100vh;
+        background-color: gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    #buttons{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .button{
+        width: 200px;
+        height: 50px;
+        border: none;
+        border-radius: 100px;
+        
+    }
+
+</style>
+<body>
+    <div id="buttons">
+        <button id="red" class="button">Red</button>
+        <button id="blue" class="button">Blue</button>
+    </div>
+</body>
+<script>
+    //----- noob ------------------------------------------------------------------------------
+    // document.querySelector("#btn01").addEventListener("click",function(){
+    //     console.log("btn01")
+    // })
+    // document.querySelector("#btn02").addEventListener("click",function(){
+    //     console.log("btn02")
+    // })
+
+    //------- beginner -----------------------------------------------------------------------
+    // document.querySelector("#buttons").addEventListener("click",(e)=>{
+    //     console.log(e.target.id);
+    //     if(e.target.id == "red"){
+    //         document.querySelector("body").style.backgroundColor = "Red";
+    //     }else if(e.target.id == "blue"){
+    //         document.querySelector("body").style.backgroundColor = "Blue";
+    //     }
+        
+    // })
+
+    //----- Advance ------------------------------------------------
+    // function ClickHandler(color){
+    //     return function(){
+    //         document.querySelector("body").style.backgroundColor = `${color}`;
+    //     }
+    // }
+    // document.querySelector("#red").addEventListener("click", ClickHandler("red"))
+    // document.querySelector("#blue").addEventListener("click", ClickHandler("blue"))
+
+
+    //------- Pro -----------------------------------------------------------------
+    // document.querySelector("#buttons").addEventListener("click", function(e){
+    //     document.querySelector("body").style.backgroundColor = e.target.id;
+    // })
+
+    //------- ultra pro ---------------------------------------------------------------
+    //I don't know 
+    
+</script>
+</html>
