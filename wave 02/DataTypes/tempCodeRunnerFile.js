@@ -1,0 +1,1 @@
+console.log(`variable 01 : ${variable01} : ${typeof variable01}`);
